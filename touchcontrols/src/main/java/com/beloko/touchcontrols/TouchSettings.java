@@ -13,7 +13,7 @@ import java.io.OutputStream;
 
 
 public class TouchSettings {
-	public static boolean DEBUG = true;
+	public static boolean DEBUG = false;
 	
 	public static String gamePadControlsFile;
 	public static boolean gamePadEnabled;

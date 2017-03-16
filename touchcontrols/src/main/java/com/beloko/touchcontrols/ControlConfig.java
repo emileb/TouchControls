@@ -93,6 +93,13 @@ public class ControlConfig implements Serializable{
 	public static final int  PORT_ACT_LEAN_LEFT =  57;
 	public static final int  PORT_ACT_LEAN_RIGHT = 58;
 
+
+	//MALICE
+	public static final int   PORT_MALICE_USE     = 59;
+	public static final int   PORT_MALICE_RELOAD  = 60;
+	public static final int   PORT_MALICE_CYCLE   = 61;
+
+
 	//JK2
 	//public static final int   PORT_ACT_FORCE_LIGHTNING = 60;
 	//public static final int   PORT_ACT_SABER_BLOCK     = 62;
@@ -152,7 +159,6 @@ public class ControlConfig implements Serializable{
 	public ControlConfig(String file,ArrayList<ActionInput> gamepadActions)
 	{
 		actions.addAll(gamepadActions);
-
 		filename = file;
 	}
 
@@ -160,6 +166,11 @@ public class ControlConfig implements Serializable{
 	{
 		ctx = c;
 		infoTextView = tv;
+	}
+
+	void saveControls() throws IOException
+	{
+		saveControls(new File (filename));
 	}
 
 	void saveControls(File file) throws IOException
@@ -186,7 +197,6 @@ public class ControlConfig implements Serializable{
 
 		InputStream fis = null;
 		ObjectInputStream in = null; 
-
 
 		fis = new FileInputStream(file);
 
@@ -270,8 +280,6 @@ public class ControlConfig implements Serializable{
 
 			sb.setMax(100);
 			sb.setProgress((int)(in.scale * 50));
-
-
 
 			final CheckBox invert = new CheckBox(act);
 			invert.setText("Invert");
@@ -421,7 +429,6 @@ public class ControlConfig implements Serializable{
 				}
 			}
 		}
-
 
 		return false;
 	}

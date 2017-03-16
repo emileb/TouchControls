@@ -1,8 +1,8 @@
 package com.beloko.touchcontrols;
 
-import java.io.Serializable;
-
 import com.beloko.touchcontrols.ControlConfig.Type;
+
+import java.io.Serializable;
 
 
 public class ActionInput implements Serializable
@@ -28,7 +28,30 @@ public class ActionInput implements Serializable
 		actionCode = action;
 		actionType = actiontype;
 	}
-	
+
+	public ActionInput(String t,String n,int action,Type actiontype,Type sourceTypeDef,int sourceDef)
+	{
+		tag = t;
+		description = n;
+		actionCode = action;
+		actionType = actiontype;
+
+		sourceType = sourceTypeDef;
+		source = sourceDef;
+	}
+
+	public ActionInput(String t,String n,int action,Type actiontype,Type sourceTypeDef,int sourceDef,boolean sourcePosDef)
+	{
+		tag = t;
+		description = n;
+		actionCode = action;
+		actionType = actiontype;
+
+		sourceType = sourceTypeDef;
+		source = sourceDef;
+		sourcePositive = sourcePosDef;
+	}
+
 	public String toString()
 	{
 		return description + ":" + sourceType.toString() + " source: " + source + " sourcePositive: " + sourcePositive;

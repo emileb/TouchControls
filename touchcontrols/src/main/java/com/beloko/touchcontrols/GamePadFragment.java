@@ -63,6 +63,14 @@ public class GamePadFragment extends Fragment {
         } catch (IOException e) {
             // TODO Auto-generated catch block
             //e.printStackTrace();
+
+            //Failed to load, so save the default
+            try {
+                config.saveControls();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+
         } catch (ClassNotFoundException e) {
             // TODO Auto-generated catch block
             //e.printStackTrace();

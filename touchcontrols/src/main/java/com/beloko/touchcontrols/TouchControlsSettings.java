@@ -26,7 +26,7 @@ public class TouchControlsSettings {
 
 	static int alpha,fwdSens,strafeSens,pitchSens,yawSens;
 
-	static boolean mouseMode,showWeaponCycle,showSticks,enableWeaponWheel;
+	static boolean mouseMode,showSticks,enableWeaponWheel;
 	static boolean invertLook,precisionShoot;
 
 	static int doubleTapMove,doubleTapLook;
@@ -35,6 +35,9 @@ public class TouchControlsSettings {
 	{
 		activity = a;
 		quakeIf = qif;
+
+		//AssetFileAccess.init(a);
+		//AssetFileAccess.setAssetManager(a.getAssets());
 	}
 
 	public static void showSettings()
@@ -55,7 +58,7 @@ public class TouchControlsSettings {
 				final SeekBar yawSeek = (SeekBar)dialog.findViewById(R.id.yaw_seekbar);
 
 				final CheckBox mouseModeCheck =  (CheckBox)dialog.findViewById(R.id.mouse_turn_checkbox);
-				final CheckBox showWeaponCycleCheckBox =  (CheckBox)dialog.findViewById(R.id.show_next_weapon_checkbox);
+
 				final CheckBox invertLookCheckBox =  (CheckBox)dialog.findViewById(R.id.invert_loop_checkbox);
 				final CheckBox precisionShootCheckBox =  (CheckBox)dialog.findViewById(R.id.precision_shoot_checkbox);
 				final CheckBox showSticksCheckBox =  (CheckBox)dialog.findViewById(R.id.show_sticks_checkbox);
@@ -84,7 +87,6 @@ public class TouchControlsSettings {
 				yawSeek.setProgress(yawSens);
 
 				mouseModeCheck.setChecked(mouseMode);
-				showWeaponCycleCheckBox.setChecked(showWeaponCycle);
 				invertLookCheckBox.setChecked(invertLook);
 				precisionShootCheckBox.setChecked(precisionShoot);
 				showSticksCheckBox.setChecked(showSticks);
@@ -147,7 +149,6 @@ public class TouchControlsSettings {
 						yawSens = yawSeek.getProgress();
 
 						mouseMode = mouseModeCheck.isChecked();
-						showWeaponCycle = showWeaponCycleCheckBox.isChecked();
 						invertLook = invertLookCheckBox.isChecked();
 						precisionShoot = precisionShootCheckBox.isChecked();
 						showSticks = showSticksCheckBox.isChecked();
@@ -170,7 +171,6 @@ public class TouchControlsSettings {
 						yawSens = yawSeek.getProgress();
 
 						mouseMode = mouseModeCheck.isChecked();
-						showWeaponCycle = showWeaponCycleCheckBox.isChecked();
 						invertLook = invertLookCheckBox.isChecked();
 						precisionShoot = precisionShootCheckBox.isChecked();
 						showSticks = showSticksCheckBox.isChecked();
@@ -202,7 +202,6 @@ public class TouchControlsSettings {
 	{
 
 		int other = 0;
-		other += showWeaponCycle?0x1:0;
 		other += mouseMode?0x2:0;
 		other += invertLook?0x4:0;
 		other += precisionShoot?0x8:0;
@@ -232,7 +231,6 @@ public class TouchControlsSettings {
 		pitchSens = TouchSettings.getIntOption(ctx, "pitchSens", 50);
 		yawSens = TouchSettings.getIntOption(ctx, "yawSens", 50);
 
-		showWeaponCycle = TouchSettings.getBoolOption(ctx, "show_weapon_cycle", true);
 		mouseMode = TouchSettings.getBoolOption(ctx, "mouse_mode", true);
 		invertLook = TouchSettings.getBoolOption(ctx, "invert_look", false);
 		precisionShoot = TouchSettings.getBoolOption(ctx, "precision_shoot", false);
@@ -251,7 +249,6 @@ public class TouchControlsSettings {
 		TouchSettings.setIntOption(ctx, "pitchSens", pitchSens);
 		TouchSettings.setIntOption(ctx, "yawSens", yawSens);
 
-		TouchSettings.setBoolOption(ctx, "show_weapon_cycle", showWeaponCycle);
 		TouchSettings.setBoolOption(ctx, "invert_look", invertLook);
 		TouchSettings.setBoolOption(ctx, "precision_shoot", precisionShoot);
 		TouchSettings.setBoolOption(ctx, "show_sticks", showSticks);
